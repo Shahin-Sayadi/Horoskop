@@ -1,0 +1,30 @@
+* {box-sizing: border-box;}
+
+body {
+    margin: 0px;
+}
+
+header {
+    height: 50px;
+    margin-left: 0px;
+    
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputContainer {
+    display: flex;
+    margin-top: 50px;
+}
