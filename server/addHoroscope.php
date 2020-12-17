@@ -4,21 +4,39 @@
 try{
     
     session_start();
+    require("./horoscopeCalc.php");
 
     if(isset($_SERVER["REQUEST_METHOD"])) {
 
         if($_SERVER["REQUEST_METHOD"] === "POST") {
+            
 
-            if(isset($_POST["name"])) {
-
-                $_SESSION["name"] = serialize($_POST["name"]);
-                echo json_encode(true);
+            if(isset($_SESSION["horoscope"])){
+                echo json_encode(false);
                 exit;
-
+                
             }else{
+                if(isset($_POST["month"]) && isset($_POST["day"])){
+                    $month = $_POST["month"];
+                    $day = $_POST["day"];
 
-                throw new Exception("No name was found in body", 500);
+                    $dates = findHoroscope($month, $day);
+                    
+                    
+                    
+                    
+                    $_SESSION["horoscope"] = serialize($dates);
+                    echo json_encode(true);
+                    exit;
+                    
+                }else{
+                    echo json_encode(false);
+                    exit;
+                }
+                
             }
+            
+           
 
         } else {
             

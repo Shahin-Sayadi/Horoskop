@@ -11,13 +11,13 @@ try{
 
             
              
-            if(isset($_SESSION["name"])) {
+            if(isset($_SESSION["horoscope"])) {
 
-                echo json_encode(unserialize($_SESSION["name"]));
+                echo json_encode(unserialize($_SESSION["horoscope"]));
                 exit;
             }else{
 
-                echo json_encode("no name is save");
+                echo json_encode(false);
                 exit;
             }
 
@@ -38,9 +38,6 @@ try{
     );
 
 }
-
-
-
 
 
 
