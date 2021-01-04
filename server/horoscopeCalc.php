@@ -33,4 +33,4 @@ function findHoroscope($month, $day)
         return "Vattumannen";
     }
 }
-
+?>

@@ -15,7 +15,8 @@ try{
                 echo json_encode(false);
                 exit;
                 
-            }else{
+                
+            }else {
                 if(isset($_POST["month"]) && isset($_POST["day"])){
                     $month = $_POST["month"];
                     $day = $_POST["day"];
@@ -30,6 +31,7 @@ try{
                     exit;
                     
                 }else{
+                    
                     echo json_encode(false);
                     exit;
                 }
@@ -55,11 +57,4 @@ try{
     );
 
 }
-
-
-
-
-
-
-
 ?>

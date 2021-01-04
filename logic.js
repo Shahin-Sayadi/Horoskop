@@ -27,8 +27,10 @@ async function setHoroscope(){
     body.set("month", month)
     
     const collectedName = await makeRequest("./server/addHoroscope.php" , "POST",body)
+    console.log(collectedName)
     
     viewHoroscope()
+
     
     
     
@@ -39,16 +41,24 @@ async function viewHoroscope(){
     const nameText = document.getElementById("nameText")
     
     const collectedName = await makeRequest("./server/viewHoroscope.php" , "GET")
-    nameText.innerText = collectedName
     
+    if(collectedName){
+        nameText.innerText = collectedName
+    }else{
+        nameText.innerText = "Finns inget horoskop sparat!"
+    }
 
+        
 }
 
 async function deleteHoroscope(){
-    const nameText = document.getElementById("nameText")
     
     const collectedName = await makeRequest("./server/deleteHoroscope.php" , "DELETE")
-    nameText.innerText = collectedName
+    
+    
+    console.log(collectedName)
+    viewHoroscope()
+    
 
 }
 
@@ -68,6 +78,7 @@ async function updateHoroscope(){
     body.set("month", month)
     
     const collectedName = await makeRequest("./server/updateHoroscope.php" , "POST",body)
+    console.log(collectedName)
     
     viewHoroscope()
     
@@ -84,7 +95,7 @@ async function makeRequest(path, method, body){
             body
  
         })
-        console.log(response)
+        
         return response.json()
     }catch(err){
         console.error(err)

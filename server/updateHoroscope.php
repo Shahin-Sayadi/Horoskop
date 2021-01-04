@@ -10,20 +10,20 @@ try{
 
         if($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            if(!isset($_POST["horoscope"])) {
+            if(isset($_SESSION["horoscope"])) {
 
-                    $month = $_POST["month"];
-                    $day = $_POST["day"];
+                $month = $_POST["month"];
+                $day = $_POST["day"];
 
-                    $dates = findHoroscope($month, $day);
-                    
-                    $_SESSION["horoscope"] = serialize($dates);
-                    echo json_encode(true);
-                    exit;
-                }else{
+                $dates = findHoroscope($month, $day);
                 
-                    echo json_encode(false);
-                    exit;
+                $_SESSION["horoscope"] = serialize($dates);
+                echo json_encode(true);
+                exit;
+            }else{
+            
+                echo json_encode(false);
+                exit;
                 
             }
 
@@ -44,11 +44,4 @@ try{
     );
 
 }
-
-
-
-
-
-
-
 ?>
